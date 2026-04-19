@@ -1,36 +1,201 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
 
-## Getting Started
+# ⚡ EduFin AI
+### Smart Study & Loan Decision Engine
 
-First, run the development server:
+**India's first AI-powered platform for students planning higher education**  
+Built for the Tensor Hackathon 2026 · Problem Statement 2
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+[![Next.js](https://img.shields.io/badge/Next.js-16.2-black?style=flat-square&logo=next.js)](https://nextjs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)](https://typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-06B6D4?style=flat-square&logo=tailwindcss)](https://tailwindcss.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+
+[🚀 Live Demo](#) · [📖 Features](#features) · [🏃 Quick Start](#quick-start)
+
+</div>
+
+---
+
+## 🎯 Problem Statement
+
+Indian students aspiring to pursue graduate/postgraduate education face a **fragmented journey** — from university discovery and visa requirements to financial planning and education loans.
+
+**EduFin AI** solves this by acting as an AI-first engagement platform that:
+- Attracts, educates, and nurtures students planning higher studies
+- Builds awareness of financing options through data-driven insights
+- Converts interest into confident loan applications through transparent AI decisions
+
+---
+
+## ✨ Features
+
+### 🧠 Decision Intelligence Engine
+| Feature | Description |
+|---|---|
+| **Loan Risk Score** | Custom SVG gauge meter with 3 risk bands (Safe / Moderate / Risky) |
+| **Loan Approval Probability** | Rule-based scoring (20–95%) simulating lender decision-making |
+| **"Why this score?" Explainability** | 4 data-driven bullet points explaining every AI decision |
+| **AI Smart Decision Advisor** | 4-persona logic tree: Proceed / Optimize / Reconsider / Delay |
+| **What-If Scenario Simulator** | Real-time comparison of current vs. alternative financial plans |
+| **Smart Insight Banner** | Auto-generated AI sentences based on simulation deltas |
+
+### 📊 Financial Planning
+- **ROI Predictor** — Salary vs. cost analysis with 5-year projection chart
+- **EMI Planner** — Live sliders with amortization curve (Loan / Tenure / Rate)
+- **Loan Eligibility Engine** — Max eligible, recommended amount, and best scheme
+- **Loan Partner Comparison** — SBI / HDFC Credila / Avanse with feature cards
+
+### 🎓 Student Discovery
+- **AI University Matches** — Top 4 best-fit universities per country & course
+- **5-Country Support** — US, UK, Canada, Germany, India with distinct salary/tuition data
+- **AI Chatbot** — Keyword-based mentor for loans, visas, scholarships, and GRE tips
+
+### 🏦 Lender-Focused
+- **Business Impact Panel** — NPA reduction, conversion quality, processing speed metrics
+- **Lender Positioning Tag** — "Built for lenders to improve loan decision quality"
+- **Repayment Success Stat** — 2–3× improvement with AI pre-screening (simulated)
+
+---
+
+## 🏗️ Tech Stack
+
+```
+Frontend:   Next.js 16 (Turbopack) · TypeScript · Tailwind CSS v4
+Charts:     Recharts (SVG-based, custom gradients)
+Icons:      Lucide React
+Fonts:      Sora (headings) · Inter (body) — Google Fonts
+AI Engine:  Rule-based Decision Intelligence (no external API)
+State:      React Context (UserContext) — persists profile across pages
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> **No API keys required.** All AI logic is deterministic and runs entirely in the browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Quick Start
 
-## Learn More
+```bash
+# Clone the repository
+git clone https://github.com/YOUR_USERNAME/edufin-ai.git
+cd edufin-ai
 
-To learn more about Next.js, take a look at the following resources:
+# Install dependencies
+npm install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Run development server
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Deploy on Vercel
+### Production Build
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run build   # Builds optimized production bundle
+npm start       # Starts production server
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── app/
+│   ├── page.tsx              # Landing page (Hero, Features, Testimonials)
+│   ├── onboarding/page.tsx   # 4-step profile wizard
+│   ├── dashboard/page.tsx    # AI Decision Dashboard (main feature)
+│   ├── loan/page.tsx         # EMI Planner & Loan Partner comparison
+│   └── apply/page.tsx        # 3-step loan application flow
+├── components/
+│   ├── Navbar.tsx            # Responsive nav with mobile hamburger menu
+│   └── ChatBot.tsx           # Floating AI mentor chatbot
+├── context/
+│   └── UserContext.tsx       # Global profile state (persists across pages)
+└── lib/
+    ├── aiLogic.ts            # 🧠 Core AI engine (ROI, Risk, Approval, Advice)
+    └── mockData.ts           # Salary maps, country data, university lists
+```
+
+---
+
+## 🤖 AI Engine Architecture
+
+All "AI" insights are generated by a **Deterministic Decision Intelligence Engine** in `src/lib/aiLogic.ts` — no external API needed.
+
+```
+User Profile Input
+      │
+      ▼
+┌─────────────────┐     ┌──────────────────────┐     ┌─────────────────────┐
+│  calculateROI() │────▶│ calculateRiskScore() │────▶│calculateApprovalScore│
+│                 │     │                      │     │                      │
+│ • Annual Salary │     │ • EMI/Salary ratio   │     │ • Base rate by risk  │
+│ • Monthly EMI   │     │ • Score 0–100        │     │ • Payback adjustment │
+│ • Payback Years │     │ • Safe/Moderate/Risky│     │ • EMI ratio adjust   │
+│ • ROI Ratio     │     └──────────────────────┘     └─────────────────────┘
+└─────────────────┘                │                           │
+                                   ▼                           ▼
+                         ┌──────────────────┐     ┌──────────────────────┐
+                         │ generateAdvice() │     │getExplanationPoints()│
+                         │                 │     │                      │
+                         │ Logic tree →    │     │ 4 Risk bullets       │
+                         │ Proceed /       │     │ 4 Approval bullets   │
+                         │ Optimize /      │     │ (data-driven text)   │
+                         │ Reconsider /    │     └──────────────────────┘
+                         │ Delay           │
+                         └──────────────────┘
+```
+
+---
+
+## 🗺️ Demo Flow (For Judges)
+
+```
+/ Landing  →  /onboarding (2-min profile)  →  /dashboard (AI analysis)
+                                                      │
+                              ┌───────────────────────┼───────────────────────┐
+                              ▼                       ▼                       ▼
+                      Risk Score             What-If Simulator         Smart Advisor
+                   + Explainability       (country/tuition/loan)    (Proceed/Optimize)
+                              │
+                              ▼
+                         /loan (EMI Planner)  →  /apply (Loan Application)
+```
+
+### Shortcut: Skip onboarding & go directly to `/dashboard` — sample data is pre-loaded.
+
+---
+
+## 📱 Responsive Design
+
+Fully responsive across all screen sizes:
+- **Mobile (≤768px):** Hamburger navigation, single-column dashboard, stacked loan planner
+- **Tablet:** 2-column layouts with auto-fit grids
+- **Desktop:** 3-column information-dense dashboard with all panels visible
+
+---
+
+## 🧪 Build Status
+
+```bash
+$ npm run build
+
+▲ Next.js 16.2.4 (Turbopack)
+✓ Compiled successfully in 1811ms
+✓ TypeScript — 0 errors
+✓ All 6 routes generated
+```
+
+---
+
+## 👨‍💻 Team
+
+Built for **Tensor Hackathon 2026** — Problem Statement 2: AI-first Student Engagement Platform.
+
+---
+
+## 📄 License
+
+MIT License — free to use, modify, and distribute.

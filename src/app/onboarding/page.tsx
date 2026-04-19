@@ -15,8 +15,27 @@ const steps = [
   { title: "Financial Planning", icon: <DollarSign size={18} />, desc: "Loan & budget details" },
 ];
 
+// ⚠️ Must be defined OUTSIDE the page component — if defined inside, React treats it
+// as a new component every render, destroying the input and losing focus on each keystroke.
+function InputGroup({ label, required, children, error }: {
+  label: string;
+  required?: boolean;
+  children: React.ReactNode;
+  error?: string;
+}) {
+  return (
+    <div style={{ marginBottom: 20 }}>
+      <label style={{ display: "block", fontSize: 13, fontWeight: 600, color: "#8892a4", marginBottom: 8, letterSpacing: 0.3 }}>
+        {label} {required && <span style={{ color: "#ff4d6d" }}>*</span>}
+      </label>
+      {children}
+      {error && <div style={{ color: "#ff4d6d", fontSize: 12, marginTop: 6 }}>⚠ {error}</div>}
+    </div>
+  );
+}
+
 export default function OnboardingPage() {
-  const { profile, updateProfile, setProfile } = useUser();
+  const { profile, updateProfile } = useUser();
   const [step, setStep] = useState(0);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const router = useRouter();
@@ -48,15 +67,7 @@ export default function OnboardingPage() {
     else router.push("/dashboard");
   };
 
-  const InputGroup = ({ label, id, required, children, error }: any) => (
-    <div style={{ marginBottom: 20 }}>
-      <label style={{ display: "block", fontSize: 13, fontWeight: 600, color: "#8892a4", marginBottom: 8, letterSpacing: 0.3 }}>
-        {label} {required && <span style={{ color: "#ff4d6d" }}>*</span>}
-      </label>
-      {children}
-      {error && <div style={{ color: "#ff4d6d", fontSize: 12, marginTop: 6 }}>⚠ {error}</div>}
-    </div>
-  );
+  // InputGroup is defined at module scope above to prevent focus-loss bug
 
   const progress = ((step + 1) / steps.length) * 100;
 
